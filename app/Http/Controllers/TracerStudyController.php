@@ -10,9 +10,10 @@ class TracerStudyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() 
+    public function index()
     {
-        return view('user.tracerStudy');
+        $tracerStudies = TracerStudy::all();
+        return view('user.tracerStudy', compact('tracerStudies'));
     }
 
     /**
@@ -28,7 +29,44 @@ class TracerStudyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'fullName' => 'required',
+            'gender' => 'required',
+            'birthDate' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'graduationYear' => 'required',
+            'major' => 'required',
+            'furtherStudy' => 'required',
+            'institution' => '',
+            'program' => '',
+            'educationLevel' => '',
+            'educationStatus' => '',
+            'employmentStatus' => 'required',
+            'companyName' => '',
+            'industry' => '',
+            'jobTitle' => '',
+            'startdate' => '',
+            'endDate' => '',
+            'companyAddress' => '',
+            'salary' => '',
+            'jobMatch' => '',
+            'previousJob' => 'required',
+            'previousJobDescription' => 'required',
+            'skillsFromSmk' => 'required',
+            'skillDescription' => 'required',
+            'additionalSkills' => 'required',
+            'suggestions' => 'required',
+            'careerPlans' => 'required',
+            'challenges' => 'required',
+            'advice' => 'required',
+        ]);
+
+        TracerStudy::create($request->except('_token'));
+
+
+        return redirect()->route('tracerStudy.index');
     }
 
     /**

@@ -6,7 +6,7 @@ use App\Http\Controllers\{
     UserController,
     AdminController,
     CareerController,
-    HomeController,
+    HomeController, 
     ProfileController,
     TracerStudyController
 };
