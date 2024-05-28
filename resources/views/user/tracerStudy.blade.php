@@ -77,7 +77,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
+                    </tbody>x
                 </table>
             </div>
         </div>
@@ -289,7 +289,6 @@
 
         <button type="submit" id="btnToggleAddTracerStudy" class="btn btn-primary float-right mt-3">Submit</button>
     </form>
-
     
     <script>
         const addTracerStudyForm = document.getElementById('add-tracer-study-form');
