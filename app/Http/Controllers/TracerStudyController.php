@@ -30,50 +30,61 @@ class TracerStudyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fullName' => '',
-            'gender' => '',
-            'birthDate' => '',
-            'address' => '',
-            'phone' => '',
-            'email' => '',
-            'graduationYear' => '',
-            'major' => '',
-            'furtherStudy' => '',
-            'institution' => '',
-            'program' => '',
-            'educationLevel' => '',
-            'educationStatus' => '',
-            'employmentStatus' => '',
-            'companyName' => '',
-            'industry' => '',
-            'jobTitle' => '',
-            'startdate' => '', 
-            'endDate' => '',
-            'companyAddress' => '',
-            'salary' => '',
-            'jobMatch' => '',
-            'previousJob' => '',
-            'previousJobDescription' => '',
-            'skillsFromSmk' => '',
-            'skillDescription' => '',
-            'additionalSkills' => '',
-            'suggestions' => '',
-            'careerPlans' => '',
-            'challenges' => '',
-            'advice' => '',
+            'fullName',
+            'gender',
+            'birthDate',
+            'address',
+            'phone',
+            'email',
+            'graduationYear',
+            'major',
+            'furtherStudy',
+            'institution',
+            'program',
+            'educationLevel',
+            'educationStatus',
+            'employmentStatus',
+            'companyName',
+            'industry',
+            'jobTitle',
+            'startDate',
+            'companyAddress',
+            'salary',
+            'jobMatch',
+            'previousJob',
+            'skillsFromSMK',
+            'additionalSkills',
+            'skillsToImprove',
+            'trainings',
+            'certifications',
+            'curriculumSatisfaction',
+            'facilitiesSatisfaction',
+            'suggestions',
+            'careerPlans',
+            'challenges',
+            'advice',
+        
         ]);
 
         TracerStudy::create($request->except('_token'));
 
-        return redirect()->route('tracerStudy.index');
+        return redirect()->route('tracer-study.index')->with('success', 'Tracer Study created successfully');
     }
 
     /**
      * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(TracerStudy $tracerStudy)
+    public function show($id)
     {
-        //
+        $tracerStudy = TracerStudy::findOrFail($id);
+
+        // TODO: Refactor the code to use route model binding
+        // https://laravel.com/docs/8.x/routing#route-model-binding
+
+        return view('user.tracerStudyShow', ['tracerStudy' => $tracerStudy]);
     }
 
     /**
